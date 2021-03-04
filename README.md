@@ -1,1 +1,1 @@
-# News-App
+#MERN-APP
