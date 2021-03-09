@@ -37,6 +37,7 @@ const Login = () => {
               value={email}
             ></input>
           </div>
+
           <div className="form-field">
             <label htmlFor="Password">Password</label>
             <input
@@ -58,7 +59,9 @@ const Login = () => {
           </div>
         </form>
 
-        <Link to={'/new-user'} className="link-account" >Create account</Link>
+        <Link to={"/new-user"} className="link-account">
+          Create account
+        </Link>
       </div>
     </div>
   );
