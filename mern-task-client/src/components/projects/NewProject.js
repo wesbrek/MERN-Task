@@ -3,7 +3,7 @@ import projectContext from "../../context/projectContext";
 
 const NewProject = () => {
   const projectsContext = useContext(projectContext);
-  const { form, showForm } = projectsContext;
+  const { form, showForm, addProject } = projectsContext;
 
   const [project, setProject] = useState({
     name: "",
@@ -20,6 +20,13 @@ const NewProject = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (project === "") return null;
+
+    addProject(project);
+
+    setProject({
+      name: "",
+    });
   };
 
   const onClickShowForm = () => showForm();
