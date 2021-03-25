@@ -1,9 +1,9 @@
 import React, { Fragment, useContext, useState } from "react";
-import projectContext from "../../context/projectContext";
+import ProjectContext from "../../context/projectContext";
 
 const NewProject = () => {
-  const projectsContext = useContext(projectContext);
-  const { form, showForm } = projectsContext;
+  const projectsContext = useContext(ProjectContext);
+  const { form, showForm, addProject, showError, formError } = projectsContext;
 
   const [project, setProject] = useState({
     name: "",
@@ -20,6 +20,14 @@ const NewProject = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (project.name === "") return showError();
+
+    addProject(project);
+
+    setProject({
+      name: "",
+    });
   };
 
   const onClickShowForm = () => showForm();
@@ -51,6 +59,10 @@ const NewProject = () => {
             value="Add project"
           />
         </form>
+      )}
+
+      {formError && (
+        <p className="message error">Please field a name for the project</p>
       )}
     </Fragment>
   );
